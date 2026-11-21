@@ -1,0 +1,39 @@
+# rbac.yaml — stream pods need read/write on Lease objects for leader election
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: msc-stream
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "msc.labels" . | nindent 4 }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: msc-stream-lease
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "msc.labels" . | nindent 4 }}
+rules:
+  - apiGroups: ["coordination.k8s.io"]
+    resources: ["leases"]
+    verbs: ["get", "create", "update", "patch"]
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "patch", "update", "create"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: msc-stream-lease
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "msc.labels" . | nindent 4 }}
+subjects:
+  - kind: ServiceAccount
+    name: msc-stream
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: msc-stream-lease
+  apiGroup: rbac.authorization.k8s.io

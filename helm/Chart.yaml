@@ -1,0 +1,6 @@
+apiVersion: v2
+name: mongo-stream-cdc
+description: MongoDB → Kafka → Postgres CDC pipeline
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

@@ -1,0 +1,55 @@
+# values.yaml — mongo-stream-cdc Helm chart
+
+image:
+  repository: asia-south1-docker.pkg.dev/interakt-prod/interaktprod/mongo-stream-cdc
+  tag: "1.0.1"
+  pullPolicy: Always
+
+mongo:
+  database: "db-main-kiwi-prod"
+
+existingSecret: "msc-secrets"
+
+kafka:
+  bootstrapServers: "staging.kafka-broker-0.interakt.ai:9094,staging.kafka-broker-1.interakt.ai:9094,staging.kafka-broker-2.interakt.ai:9094"
+  topicPrefix: "msc"
+  consumerGroup: "msc-sink-group"
+  securityProtocol: "SASL_SSL"
+  saslMechanism: "PLAIN"
+
+snap:
+  enabled: true
+  backoffLimit: 2
+  ttlSecondsAfterFinished: 7200
+  batchSize: 500
+  tables: []
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "1000m"
+
+stream:
+  replicas: 2
+  leaseDurationS: "30"
+  renewIntervalS: "10"
+  retryIntervalS: "5"
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+
+sink:
+  replicas: 1
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "1024Mi"
+      cpu: "500m"

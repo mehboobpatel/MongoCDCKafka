@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: msc-config
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "msc.labels" . | nindent 4 }}
+data:
+  config.json: |
+    {
+      "mongo_database": {{ .Values.mongo.database | quote }},
+      "kafka_bootstrap_servers": {{ .Values.kafka.bootstrapServers | splitList "," | toJson }},
+      "kafka_topic_prefix": {{ .Values.kafka.topicPrefix | quote }},
+      "kafka_consumer_group": {{ .Values.kafka.consumerGroup | quote }},
+      "kafka_security_protocol": {{ .Values.kafka.securityProtocol | quote }},
+      "kafka_sasl_mechanism": {{ .Values.kafka.saslMechanism | quote }},
+      "batch_size": 500
+    }

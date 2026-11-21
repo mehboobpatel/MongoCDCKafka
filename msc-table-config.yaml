@@ -1,0 +1,583 @@
+apiVersion: v1
+data:
+  combined_table_config_3.json: "[\n  {\n    \"table_name\": \"DailyAIConversationStats\",\n
+    \   \"field_file\": \"daily_ai_conv_stats_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"organization_id uuid\",\n      \"total_conversations integer\",\n      \"total_ai_messages
+    integer\",\n      \"total_agentic_messages integer\",\n      \"total_trigger_messages
+    integer\",\n      \"total_handoffs integer\",\n      \"PRIMARY KEY (id)\"\n    ]\n
+    \ },\n  {\n    \"table_name\": \"Ctwa_Funnel\",\n    \"field_file\": \"ctwa_funnel_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"created_by_user_id uuid\",\n
+    \     \"organization_id uuid\",\n      \"ad_id varchar(256)\",\n      \"step_number
+    integer\",\n      \"auto_replies_ids JSONB\",\n      \"events_ids JSONB\",\n      \"calculate_roas_in_days
+    integer\",\n      \"cost_per_lead float8\",\n      \"step_name varchar(256)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Ctwa_Ads\",\n
+    \   \"field_file\": \"ctwa_ads_field_file\",\n    \"schema\": [\n      \"id uuid\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted
+    boolean\",\n      \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n
+    \     \"organization_name varchar(256)\",\n      \"vertical varchar(256)\",\n
+    \     \"partner_id uuid\",\n      \"partner_name varchar(256)\",\n      \"payment_gateway
+    varchar(50)\",\n      \"subscription_plan varchar(100)\",\n      \"subscription_value
+    float8\",\n      \"customer_username varchar(256)\",\n      \"customer_email varchar(256)\",\n
+    \     \"customer_phone varchar(80)\",\n      \"ad_id varchar(256)\",\n      \"ad_url
+    varchar(256)\",\n      \"ad_type varchar(256)\",\n      \"is_conversation_archived
+    boolean\",\n      \"is_picked_up_by_an_agent boolean\",\n      \"ad_title varchar(256)\",\n
+    \     \"convesation_starter varchar(4096)\",\n      \"conversion_value float8\",\n
+    \     \"step_number integer\",\n      \"event_id uuid\",\n      \"event_name varchar(256)\",\n
+    \     \"auto_reply_id uuid\",\n      \"auto_reply_name varchar(4096)\",\n      \"chat_id
+    uuid\",\n      \"customer_id uuid\",\n      \"conversion_category text\",\n      \"currency
+    text\",\n      \"conversion_source varchar(64)\",\n      \"PRIMARY KEY (id)\"\n
+    \   ]\n  },\n  {\n    \"table_name\": \"Ctwa_Ad_Campaign\",\n    \"field_file\":
+    \"ctwa_ad_campaign_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc
+    timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n
+    \     \"name varchar(56)\",\n      \"campaign_budget float8\",\n      \"campaign_start_date
+    timestamp\",\n      \"campaign_end_date timestamp\",\n      \"status varchar(32)\",\n
+    \     \"creatives jsonb\",\n      \"targeting jsonb\",\n      \"engagement_config
+    jsonb\",\n      \"conversions jsonb\",\n      \"fb_page_id varchar(56)\",\n      \"fb_ad_account_id
+    varchar(56)\",\n      \"rejection_reason varchar(256)\",\n      \"fb_ad_campaign_id
+    varchar(56)\",\n      \"fb_ad_set_id varchar(56)\",\n      \"fb_ad_creative_id
+    varchar(56)\",\n      \"fb_ad_id varchar(56)\",\n      \"ad_type varchar(56)\",\n
+    \     \"create_instagram_ad boolean\",\n      \"exchange_rate varchar(56)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Ctwa_Page\",\n
+    \   \"field_file\": \"ctwa_page_field_file\",\n    \"schema\": [\n      \"id uuid\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted
+    boolean\",\n      \"organization_id uuid\",\n      \"display_pic_url varchar(2048)\",\n
+    \     \"cover_pic_url varchar(2048)\",\n      \"description varchar(256)\",\n
+    \     \"name varchar(56)\",\n      \"page_categories jsonb\",\n      \"status
+    varchar(32)\",\n      \"fb_page_id varchar(56)\",\n      \"address varchar(256)\",\n
+    \     \"city varchar(56)\",\n      \"state varchar(56)\",\n      \"country varchar(56)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Message_Template\",\n
+    \   \"field_file\": \"message_template_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"name varchar(1024)\",\n      \"language varchar(128)\",\n      \"category
+    varchar(512)\",\n      \"sub_category varchar(256)\",\n      \"template_category_label
+    varchar(512)\",\n      \"header_format varchar(128)\",\n      \"display_name varchar(1024)\",\n
+    \     \"organization_id uuid\",\n      \"header varchar(512)\",\n      \"header_handle
+    jsonb\",\n      \"header_handle_file_url varchar(1024)\",\n      \"header_handle_file_name
+    varchar(128)\",\n      \"header_text jsonb\",\n      \"body text\",\n      \"body_text
+    jsonb\",\n      \"footer text\",\n      \"buttons jsonb\",\n      \"button_text
+    jsonb\",\n      \"allow_category_change boolean\",\n      \"limited_time_offer
+    jsonb\",\n      \"carousel_cards jsonb\",\n      \"autosubmitted_for varchar(128)\",\n
+    \     \"approval_status varchar(128)\",\n      \"wa_template_id varchar(128)\",\n
+    \     \"is_archived boolean\",\n      \"channel_type varchar(128)\",\n      \"is_click_tracking_enabled
+    boolean\",\n      \"allow_delete boolean\",\n      \"rejection_reason varchar(512)\",\n
+    \     \"is_mpm boolean\",\n      \"is_carousel boolean\",\n      \"sample_template_id
+    uuid\",\n      \"meta_data jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n
+    \ {\n    \"table_name\": \"Organization_Invoice\",\n    \"field_file\": \"organization_invoice_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"organization_id uuid\",\n      \"organization_name varchar(128)\",\n      \"payment_gateway
+    varchar(32)\",\n      \"plan_name varchar(64)\",\n      \"subscription_amount
+    float8\",\n      \"unique_users bigint\",\n      \"usages_cost float8\",\n      \"proration_cost
+    float8\",\n      \"invoice_date varchar(128)\",\n      \"billing_start_date varchar(128)\",\n
+    \     \"billing_end_date varchar(128)\",\n      \"plan_change_date varchar(128)\",\n
+    \     \"subscription_end_date varchar(128)\",\n      \"charge_id varchar(512)\",\n
+    \     \"total_amount float8\",\n      \"invoice_type varchar(32)\",\n      \"invoice_url
+    varchar(500)\",\n      \"pg_invoice_id varchar(32)\",\n      \"PRIMARY KEY (id)\"\n
+    \   ]\n  },\n  {\n    \"table_name\": \"Credit_Transaction\",\n    \"field_file\":
+    \"credit_transaction_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc
+    timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id
+    uuid\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"transaction_type
+    varchar(32)\",\n      \"amount float8\",\n      \"current_balance float8\",\n
+    \     \"currency varchar(32)\",\n      \"invoice_url varchar(2048)\",\n      \"description
+    varchar(2048)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Partner\",\n    \"field_file\": \"partner_field_file\",\n    \"schema\": [\n
+    \     \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"name varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Subscription\",\n    \"field_file\": \"subscription_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"name varchar(256)\",\n      \"is_active boolean\",\n      \"value integer\",\n
+    \     \"payment_gateway varchar(32)\",\n      \"pg_subscription_id varchar(64)\",\n
+    \     \"pg_metered_subscription_id varchar(64)\",\n      \"currency varchar(64)\",\n
+    \     \"usage_rules varchar(10000)\",\n      \"notification_limit integer\",\n
+    \     \"user_limit integer\",\n      \"partner_id uuid\",\n      \"is_default_plan
+    boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Organization\",\n    \"field_file\": \"organization_field_file\",\n    \"schema\":
+    [\n     \"city varchar(128)\",\n     \"address_line_1 varchar(256)\",\n     \"address_line_2
+    varchar(256)\",\n     \"state varchar(128)\",\n     \"pincode varchar(10)\",\n
+    \    \"stripe_customer_id varchar(128)\",\n     \"is_payment_enabled boolean\",\n
+    \    \"country varchar(50)\",\n     \"gst_registration_certificate_url varchar(1024)\",\n
+    \    \"gst_number varchar(64)\",\n     \"legal_business_name varchar(512)\",\n
+    \    \"email varchar(256)\",\n     \"phone varchar(50)\",\n     \"country_code
+    varchar(50)\",\n     \"subscription_plan_selected_on_sign_up varchar(50)\",\n
+    \    \"company_type varchar(128)\",\n     \"company_website varchar(1024)\",\n
+    \    \"id uuid\",\n     \"created_at_utc timestamp\",  \n     \"modified_at_utc
+    timestamp\",  \n     \"created_by_user_id uuid\",  \n     \"is_deleted boolean\",
+    \ \n     \"name varchar(256)\",  \n     \"subdomain varchar(128)\",  \n     \"only_wa_notifications
+    boolean\",  \n     \"FB_business_manager_id varchar(256)\",  \n     \"onboarding_status
+    varchar(128)\",  \n     \"FB_business_verification_status varchar(50)\",  \n     \"FB_business_verification_route
+    varchar(64)\",\n     \"FB_verification_rejection_reasons jsonb\",\n     \"wa_api_approval_status
+    varchar(64)\",\n     \"waba_id varchar(128)\",\n     \"templates_last_synced_at_utc
+    timestamp\",\n     \"utm_campaign varchar(128)\",\n     \"utm_content varchar(128)\",\n
+    \    \"utm_medium varchar(128)\",\n     \"utm_source varchar(128)\",\n     \"utm_term
+    varchar(256)\",\n     \"credit_balance float8\",\n     \"currency varchar(8)\",\n
+    \    \"is_embedded_signup_enabled boolean\",\n     \"signup_source varchar(32)\",\n
+    \    \"gclid varchar(1024)\",\n     \"fbclid varchar(2048)\",\n     \"designation
+    varchar(256)\",\n     \"company_location varchar(256)\",\n     \"partner_id uuid\",\n
+    \    \"shopify_app_type varchar(32)\",\n     \"max_revenue varchar(32)\",\n     \"min_revenue
+    varchar(32)\",\n     \"revenue_currency varchar(8)\",\n     \"is_mandate_migrated
+    boolean\",\n     \"is_load_balance_enabled boolean\",\n     \"payment_gateway_customer_id
+    varchar(256)\",\n     \"org_type varchar(128)\",\n     \"waba_policy_violation_status
+    varchar(64)\",\n     \"last_waba_policy_violation_status_updated_at timestamp\",\n
+    \    \"activate_channel_instagram boolean\",\n     \"payment_gateway varchar(32)\",\n
+    \    \"PRIMARY KEY (id)\" \n    ]\n  },\n  {\n    \"table_name\": \"Catalog\",\n
+    \   \"field_file\": \"catalog_field_file\",\n    \"schema\": [\n      \"id uuid\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id
+    uuid\",\n      \"is_deleted boolean\",\n      \"fb_catalog_id varchar(128)\",\n
+    \     \"organization_id uuid\",\n      \"sync_status varchar(32)\",\n      \"last_sync_at
+    timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Collection\",\n    \"field_file\": \"collection_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"organization_id uuid\",\n      \"name varchar(512)\",\n      \"fb_collection_id
+    varchar(128)\",\n      \"filter varchar(10000000)\",\n      \"body_text varchar(1024)\",\n
+    \     \"is_selected boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n
+    \   \"table_name\": \"ListMessage\",\n    \"field_file\": \"list_message_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"organization_id uuid\",\n      \"name text\",\n      \"message_content
+    varchar(10000)\",\n      \"body_text varchar(1024)\",\n      \"header_text varchar(64)\",\n
+    \     \"footer_text varchar(64)\",\n      \"button_text varchar(128)\",\n      \"PRIMARY
+    KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Product_Collection\",\n    \"field_file\":
+    \"product_collection_field_file\",\n    \"schema\": [\n      \"id bigint\",\n
+    \     \"product_id uuid\",\n      \"collection_id uuid\",\n      \"PRIMARY KEY
+    (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"User\",\n    \"metabase_table_name\":
+    \"User_table\",\n    \"field_file\": \"user_field_file\",\n    \"schema\": [\n
+    \     \"last_login timestamp\",\n      \"is_superuser bool\",\n      \"is_staff
+    bool\",\n      \"is_active bool\",\n      \"date_joined timestamp\",\n      \"id
+    UUID\",\n      \"first_name varchar(1024)\",\n      \"last_name varchar(1024)\",\n
+    \     \"username varchar(100)\",\n      \"email varchar(100)\",\n      \"phone
+    varchar(100)\",\n      \"login_method varchar(100)\",\n      \"first_logged_in_at_utc
+    timestamp\",\n      \"timezone_offset_in_mins integer\",\n      \"created_at_utc
+    timestamp\",\n      \"last_logged_in_at_utc timestamp\",\n      \"is_deleted bool\",\n
+    \     \"email_address_verification_key varchar(30)\",\n      \"email_address_verification_key_expires_at_utc
+    timestamp\",\n      \"is_email_address_verified bool\",\n      \"email_address_verified_at_utc
+    timestamp\",\n      \"pwd_reset_key varchar(30)\",\n      \"pwd_reset_key_expires_at_utc
+    timestamp\",\n      \"country_code varchar(10)\",\n      \"referral_code varchar(128)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Business_Profile\",\n
+    \   \"field_file\": \"business_profile_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_channel_id
+    uuid\",\n      \"address varchar(500)\",\n      \"description varchar(2000)\",\n
+    \     \"email varchar(64)\",\n      \"vertical varchar(200)\",\n      \"websites
+    varchar(1000)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Organization_Channel\",\n    \"field_file\": \"organization_channel_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"organization_id uuid\",\n      \"channel_type varchar(32)\",\n      \"phone_number
+    varchar(16)\",\n      \"channel_phone_number varchar(64)\",\n      \"country_code
+    varchar(16)\",\n      \"container_base_url varchar(256)\",\n      \"container_admin_password
+    varchar(64)\",\n      \"container_admin_username varchar(64)\",\n      \"container_namespace
+    varchar(256)\",\n      \"wa_approval_status varchar(32)\",\n      \"otp_verified_at_utc
+    timestamp\",\n      \"container_certificate varchar(2560)\",\n      \"profile_photo_url
+    varchar(512)\",\n      \"display_name varchar(256)\",\n      \"messaging_limit
+    varchar(1000)\",\n      \"is_container_config_done boolean\",\n      \"container_pin
+    varchar(256)\",\n      \"whatsapp_quality_status varchar(16)\",\n      \"container_status
+    varchar(32)\",\n      \"mm_lite_enabled boolean\",\n      \"storefront_status
+    varchar(16)\",\n      \"account_identifier varchar(64)\",\n      \"status varchar(64)\",\n
+    \     \"signup_type varchar(64)\",\n      \"metadata JSONB DEFAULT '{}'\",\n      \"PRIMARY
+    KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_subscription\",\n
+    \   \"field_file\": \"organization_subscription_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"subscription_id uuid\",\n      \"organization_id uuid\",\n      \"subscription_start_date
+    timestamp\",\n      \"subscription_end_date timestamp\",\n      \"next_payment_date
+    timestamp\",\n      \"interakt_pg_subscription_id varchar(128)\",\n      \"payment_gateway
+    varchar(48)\",\n      \"e_mandate_id varchar(128)\",\n      \"e_mandate_status
+    varchar(32)\",\n      \"payment_gateway_subscription_status varchar(128)\",\n
+    \     \"interakt_subscription_status varchar(128)\",\n      \"churn_reason varchar(128)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Addon_Subscription\",\n
+    \   \"field_file\": \"organization_addon_subscription_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"app_id uuid\",\n      \"organization_id uuid\",\n      \"addon_id uuid\",\n
+    \     \"addon_code varchar(128)\",\n      \"status varchar(64)\",\n      \"price
+    float8\",\n      \"currency varchar(8)\",\n      \"interval varchar(64)\",\n      \"deactivated_at
+    timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Organization_Sandbox\",\n    \"field_file\": \"organization_sandbox_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n
+    \     \"sandbox_code varchar(32)\",\n      \"sandbox_channel_phone_number varchar(32)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_App\",\n
+    \   \"field_file\": \"organization_app_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n      \"name
+    varchar(128)\",\n      \"active boolean\",\n      \"attributes JSONB\",\n      \"PRIMARY
+    KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Wallet\",\n    \"field_file\":
+    \"wallet_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc
+    timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n
+    \     \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n      \"balance
+    float8\",\n      \"currency varchar(32)\",\n      \"parked_balance float8\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Orders\",\n
+    \   \"field_file\": \"orders_field_file\",\n    \"schema\": [\n      \"id int\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id
+    uuid\",\n      \"customer_id uuid\",\n      \"address_id uuid\",\n      \"cart_received_at
+    timestamp\",\n      \"order_placed_at timestamp\",\n      \"cart_value float8\",\n
+    \     \"discount float8\",\n      \"shipping_charge float8\",\n      \"total_amount
+    float8\",\n      \"currency varchar(3)\",\n      \"payment_link varchar(1024)\",\n
+    \     \"cod_confirmation_link varchar(1024)\",\n      \"payment_gateway varchar(32)\",\n
+    \     \"order_status varchar(32)\",\n      \"payment_status varchar(32)\",\n      \"fulfillment_status
+    varchar(32)\",\n      \"platform varchar(32)\",\n      \"cart_platform varchar(32)\",\n
+    \     \"order_platform varchar(32)\",\n      \"order_driver varchar(32)\",\n      \"platform_order_number
+    varchar(512)\",\n      \"campaign_id uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n
+    \ },\n  {\n    \"table_name\": \"Organization_Billing\",\n    \"field_file\":
+    \"organization_billing_field_file\",\n    \"schema\": [\n      \"id uuid\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id
+    uuid\",\n      \"description varchar(1024)\",\n      \"currency varchar(8)\",\n
+    \     \"status varchar(32)\",\n      \"total_amount float8\",\n      \"credits_used
+    float8\",\n      \"amount_due float8\",\n      \"charge_id varchar(256)\",\n      \"payment_gateway
+    varchar(48)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Organization_Welcome_Message\",\n    \"field_file\": \"organization_welcome_message_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"is_enabled boolean\",\n
+    \     \"message text\",\n      \"media_url varchar(8192)\",\n      \"variable_fallback_values
+    text\",\n      \"is_list_message_enabled boolean\",\n      \"list_message_name
+    varchar(128)\",\n      \"wa_flow_setup text\",\n      \"PRIMARY KEY (id)\"\n    ]\n
+    \ },\n  {\n    \"table_name\": \"Compliance_Info\",\n    \"field_file\": \"compliance_info_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"entity_name varchar(512)\",\n
+    \     \"entity_type varchar(128)\",\n      \"entity_type_custom varchar(256)\",\n
+    \     \"customer_care_details jsonb\",\n      \"grievance_officer_details jsonb\",\n
+    \     \"is_registered boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n
+    \   \"table_name\": \"Organization_Delayed_Message\",\n    \"field_file\": \"organization_delayed_message_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"message text\",\n      \"media_url
+    varchar(8192)\",\n      \"variable_fallback_values text\",\n      \"is_enabled
+    boolean\",\n      \"delay_by_seconds bigint\",\n      \"enabled_for_new_user boolean\",\n
+    \     \"enabled_for_existing_user boolean\",\n      \"is_list_message_enabled
+    boolean\",\n      \"list_message_name varchar(128)\",\n      \"wa_flow_setup jsonb\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Out_Of_Office\",\n
+    \   \"field_file\": \"organization_out_of_office_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"is_enabled boolean\",\n
+    \     \"weekly_rule jsonb\",\n      \"message text\",\n      \"media_url varchar(8192)\",\n
+    \     \"variable_fallback_values text\",\n      \"is_list_message_enabled boolean\",\n
+    \     \"list_message_name varchar(128)\",\n      \"wa_flow_setup jsonb\",\n      \"PRIMARY
+    KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Tag\",\n    \"field_file\":
+    \"organization_tag_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc
+    timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n
+    \     \"name varchar(256)\",\n      \"color_hex varchar(8)\",\n      \"is_auto_user_segment
+    boolean\",\n      \"rules jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n
+    \ {\n    \"table_name\": \"Chat_Widget\",\n    \"field_file\": \"chat_widget_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"widget_token varchar(32)\",\n
+    \     \"used_on text\",\n      \"form_factor varchar(32)\",\n      \"rendering_device
+    varchar(32)\",\n      \"widget_position_desktop varchar(32)\",\n      \"widget_position_mobile
+    varchar(32)\",\n      \"color_type varchar(32)\",\n      \"color_hex_from varchar(32)\",\n
+    \     \"color_hex_to varchar(32)\",\n      \"button_text varchar(128)\",\n      \"image_url
+    varchar(256)\",\n      \"prefilled_message varchar(256)\",\n      \"bottom_spacing_desktop
+    int\",\n      \"bottom_spacing_mobile int\",\n      \"side_spacing_desktop int\",\n
+    \     \"side_spacing_mobile int\",\n      \"greeting text\",\n      \"introduction
+    text\",\n      \"channel_id uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n
+    \ {\n    \"table_name\": \"BULK_UPLOAD_JOB\",\n    \"field_file\": \"bulk_upload_job_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"started_at_utc timestamp\",\n
+    \     \"completed_at_utc timestamp\",\n      \"status varchar(32)\",\n      \"total_count
+    int\",\n      \"success_count int\",\n      \"failure_count int\",\n      \"metadata
+    jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"ROLE\",\n
+    \   \"field_file\": \"role_field_file\",\n    \"schema\": [\n      \"id uuid\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id
+    uuid\",\n      \"name varchar(256)\",\n      \"phone_number_hide boolean\",\n
+    \     \"users_all_view boolean\",\n      \"users_export_users boolean\",\n      \"users_add_contacts
+    boolean\",\n      \"users_add_tags boolean\",\n      \"inbox_all_chats boolean\",\n
+    \     \"inbox_unassigned_chats boolean\",\n      \"notifications_create_new_campaign
+    boolean\",\n      \"settings_billing_details boolean\",\n      \"settings_team_management
+    boolean\",\n      \"settings_developer_settings boolean\",\n      \"settings_setup_your_business_account
+    boolean\",\n      \"analytics_all_view boolean\",\n      \"analytics_export_data
+    boolean\",\n      \"settings_invoice_history boolean\",\n      \"settings_subscription_details
+    boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Member\",\n    \"field_file\": \"member_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"user_id uuid\",\n      \"organization_id uuid\",\n      \"role text\",\n
+    \     \"widget_preferences text\",\n      \"all_users_columns_preferences text\",\n
+    \     \"user_journey text\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"CUSTOMER_SHOPIFY_ORDER\",\n    \"field_file\": \"customer_shopify_order_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"customer_id uuid\",\n      \"shopify_order_id varchar(128)\",\n
+    \     \"shopify_store_name varchar(256)\",\n      \"confirmation_response varchar(16)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"ORDER_ITEM\",\n
+    \   \"field_file\": \"order_item_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"order_id varchar(128)\",\n      \"name varchar(512)\",\n      \"price
+    float8\",\n      \"currency varchar(3)\",\n      \"quantity int\",\n      \"amount
+    float8\",\n      \"retailer_id varchar(128)\",\n      \"shipped_at timestamp\",\n
+    \     \"delivered_at timestamp\",\n      \"image_url varchar(4096)\",\n      \"url
+    varchar(4096)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Bot\",\n    \"field_file\": \"bot_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"name varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Organization_Bot\",\n    \"field_file\": \"organization_bot_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"organization_channel_id
+    uuid\",\n      \"bot_id uuid\",\n      \"status varchar(32)\",\n      \"bot_messages
+    jsonb\",\n      \"trigger_message_content_type varchar(32)\",\n      \"keywords
+    jsonb\",\n      \"attributes jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n
+    \ {\n    \"table_name\": \"Sample_Campaign\",\n    \"field_file\": \"sample_campaign_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"name varchar(256)\",\n      \"description text\",\n      \"template_name
+    varchar(64)\",\n      \"template_language varchar(32)\",\n      \"visibility_rules
+    jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Campaign_Goal\",\n
+    \   \"field_file\": \"campaign_goal_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"campaign_id uuid\",\n      \"organization_id uuid\",\n      \"status varchar(128)\",\n
+    \     \"event_name varchar(128)\",\n      \"conversion_value_event_trait varchar(128)\",\n
+    \     \"conversion_deadline_in_seconds bigint\",\n      \"total_conversion_count
+    int\",\n      \"total_conversion_value float8\",\n      \"PRIMARY KEY (id)\"\n
+    \   ]\n  },\n  {\n    \"table_name\": \"Sample_Message_Template\",\n    \"field_file\":
+    \"sample_message_template_field_file\",\n    \"schema\": [\n      \"id uuid\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"name
+    varchar(512)\",\n      \"language varchar(128)\",\n      \"category varchar(256)\",\n
+    \     \"template_category_label varchar(256)\",\n      \"header_format varchar(128)\",\n
+    \     \"header varchar(512)\",\n      \"header_handle jsonb\",\n      \"header_handle_file_url
+    varchar(1024)\",\n      \"header_handle_file_name varchar(128)\",\n      \"header_text
+    jsonb\",\n      \"body text\",\n      \"body_text jsonb\",\n      \"footer text\",\n
+    \     \"buttons jsonb\",\n      \"button_text jsonb\",\n      \"organization_id
+    varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Product_Batch\",\n    \"field_file\": \"product_batch_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"organization_id uuid\",\n      \"batch_handle varchar(256)\",\n
+    \     \"metadata jsonb\",\n      \"status varchar(32)\",\n      \"product_id uuid\",\n
+    \     \"fb_catalog_id varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n
+    \ {\n    \"table_name\": \"Organization_Workflows\",\n    \"field_file\": \"organization_workflows_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc
+    timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n
+    \     \"name varchar(4096)\",\n      \"is_advanced_workflow boolean\",\n      \"is_webhook_workflow
+    boolean\",\n      \"workflow_setup_category varchar(64)\",\n      \"is_active
+    boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Workflow_Steps\",\n    \"field_file\": \"workflow_steps_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc timestamp\",\n
+    \     \"modified_at_utc timestamp\",\n      \"workflow_id uuid\",\n      \"step_number
+    int\",\n      \"message text\",\n      \"message_type varchar(256)\",\n      \"variable_fallback_values
+    text\",\n      \"buttons jsonb\",\n      \"list_message_name varchar(256)\",\n
+    \     \"user_trait_name varchar(128)\",\n      \"type varchar(256)\",\n      \"step_data
+    jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Workflow_Sample_Templates\",\n
+    \   \"field_file\": \"workflow_sample_templates_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc timestamp\",\n
+    \     \"modified_at_utc timestamp\",\n      \"name varchar(256)\",\n      \"category
+    varchar(256)\",\n      \"template_data jsonb\",\n      \"pre_flow_name varchar(256)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Partner_Requests\",\n
+    \   \"field_file\": \"partner_requests_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc timestamp\",\n
+    \     \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"partner_id
+    uuid\",\n      \"organization_id uuid\",\n      \"request_type varchar(32)\",\n
+    \     \"status varchar(32)\",\n      \"amount float8\",\n      \"subscription_id
+    uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Routing\",\n
+    \   \"field_file\": \"organization_routing_field_file\",\n    \"schema\": [\n
+    \     \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"directive jsonb\",\n      \"assignees
+    jsonb\",\n      \"name varchar(256)\",\n      \"created_by_user_id uuid\",\n      \"organization_id
+    uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"tally_chat_message_report\",\n
+    \   \"field_file\": \"tally_chat_message_report_field_file\",\n    \"schema\":
+    [\n     \"id uuid\",\n     \"created_at_utc timestamp\",\n     \"modified_at_utc
+    timestamp\",\n     \"is_deleted boolean\",\n     \"organization_id varchar(256)\",\n
+    \    \"tsn_id varchar(256)\",\n     \"org_name varchar(256)\",\n     \"current_subscription_plan
+    varchar(256)\",\n     \"channel_number varchar(256)\",\n     \"country varchar(256)\",\n
+    \    \"number_of_message_recieved_from_customer varchar(256)\",\n     \"number_of_sent_message_for_agent
+    varchar(256)\",\n     \"number_of_delivered_message_for_agent varchar(256)\",\n
+    \    \"number_of_read_message_for_agent varchar(256)\",\n     \"number_of_failed_message_for_agent
+    varchar(256)\",\n     \"number_of_sent_message_for_public_api varchar(256)\",\n
+    \    \"number_of_delivered_message_for_public_api varchar(256)\",\n     \"number_of_read_message_for_public_api
+    varchar(256)\",\n     \"number_of_failed_message_for_public_api varchar(256)\",\n
+    \    \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"tally_failure_message_report\",\n
+    \   \"field_file\": \"tally_failure_message_report_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id varchar(256)\",\n
+    \     \"tsn_id varchar(256)\",\n      \"org_name varchar(256)\",\n      \"current_subscription_plan
+    varchar(256)\",\n      \"channel_number varchar(256)\",\n      \"country varchar(256)\",\n
+    \     \"failure_message varchar(256)\",\n      \"failure_count varchar(256)\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"campaign_clicks_count\",\n
+    \   \"field_file\": \"campaign_clicks_count_field_file\",\n    \"schema\": [\n
+    \     \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"campaign_id uuid\",\n      \"template_id uuid\",\n      \"click_type varchar(16)\",\n
+    \     \"link text\",\n      \"button_text varchar(128)\",\n      \"total_clicks
+    integer\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"organization_nudge\",\n    \"field_file\": \"organization_nudge_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n
+    \     \"nudge_id uuid\",\n      \"meta_data jsonb\",\n      \"is_read boolean\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"nudge_repository\",\n
+    \   \"field_file\": \"nudge_repository_field_file\",\n    \"schema\": [\n      \"id
+    uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n
+    \     \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"name
+    varchar(1028)\",\n      \"category varchar(128)\",\n      \"title varchar(128)\",\n
+    \     \"body varchar(1028)\",\n      \"cta_text varchar(128)\",\n      \"cta_url
+    varchar(1024)\",\n      \"applicable_partner_ids jsonb\",\n      \"applicable_sub_plan_ids
+    jsonb\",\n      \"organization_id varchar(128)\",\n      \"meta_data jsonb\",\n
+    \     \"eta timestamp\",\n      \"expiry_time timestamp\",\n      \"PRIMARY KEY
+    (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"zocket_meta_ad_mappings\",\n    \"field_file\":
+    \"zocket_meta_ad_mappings_field_file\",\n    \"schema\": [\n      \"id uuid\",\n
+    \     \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted
+    boolean\",\n      \"organization_id varchar(256)\",\n      \"workflow_id varchar(256)\",\n
+    \     \"meta_ad_id varchar(256)\",\n      \"meta_ad_name varchar(256)\",\n      \"zocket_campaign_name
+    varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"CodToPrepaidConfig\",\n    \"field_file\": \"codtoprepaidconfig_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n
+    \     \"order_platform varchar(32)\",\n      \"platform_configurations jsonb\",\n
+    \     \"discount_on_conversion jsonb\",\n      \"prepayment_option_expires_in
+    jsonb\",\n      \"emails_to_notify_post_prepayment jsonb\",\n      \"is_enabled
+    boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"Automation_Stats\",\n    \"field_file\": \"automation_stats_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n
+    \     \"num_faq_messages_wa bigint\",\n      \"num_faq_messages_ig bigint\",\n
+    \     \"num_workflow_messages bigint\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n
+    \ {\n    \"table_name\": \"Marketing_Leads\",\n    \"field_file\": \"marketing_leads_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"event_id varchar(256)\",\n
+    \     \"event_description varchar(256)\",\n      \"user_id varchar(256)\",\n      \"user_first_name
+    varchar(256)\",\n      \"user_last_name varchar(256)\",\n      \"user_phone_number
+    varchar(32)\",\n      \"user_email varchar(256)\",\n      \"user_industry varchar(256)\",\n
+    \     \"user_event_attended boolean\",\n      \"user_meta_data varchar(256)\",\n
+    \     \"user_country varchar(256)\",\n      \"user_org varchar(256)\",\n      \"user_country_code
+    varchar(256)\",\n      \"user_job_title varchar(256)\",\n      \"user_join_url
+    varchar(256)\",\n      \"event_date_timestamp_ist varchar(256)\",\n      \"event_date_timestamp
+    timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\":
+    \"flow_message_response\",\n    \"field_file\": \"flow_message_response_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n
+    \     \"campaign_id uuid\",\n      \"customer_id uuid\",\n      \"flow_id text\",\n
+    \     \"flow_response jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n
+    \   \"table_name\": \"Organization_Lifecycle\",\n    \"field_file\": \"organization_lifecycle_field_file\",\n
+    \   \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"is_deleted
+    boolean\",\n      \"organization_id uuid\",\n      \"name varchar(256)\",\n      \"legal_business_name
+    varchar(512)\",\n      \"waba_id varchar(128)\",\n      \"partner varchar(64)\",\n
+    \     \"payment_gateway varchar(32)\",\n      \"signup_date timestamp\",\n      \"free_trial_end_date
+    timestamp\",\n      \"first_paid_sub_start_date timestamp\",\n      \"previous_plan
+    varchar(128)\",\n      \"previous_plan_renewal_cycle varchar(128)\",\n      \"previous_sub_start_date
+    timestamp\",\n      \"previous_sub_end_date timestamp\",\n      \"current_plan
+    varchar(128)\",\n      \"current_plan_renewal_cycle varchar(128)\",\n      \"current_sub_start_date
+    timestamp\",\n      \"current_sub_end_date timestamp\",\n      \"latest_upgrade_date
+    timestamp\",\n      \"latest_downgrade_date timestamp\",\n      \"latest_migrated_date
+    timestamp\",\n      \"churn_date timestamp\",\n      \"reverse_churn_date timestamp\",\n
+    \     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"FAQ_Comment_Mapping\",\n
+    \   \"field_file\": \"faq_comment_mapping_field_file\",\n    \"schema\": [\n      \"id
+    uuid\", \n      \"created_at_utc timestamp\", \n      \"modified_at_utc timestamp\",
+    \n      \"is_deleted boolean\", \n      \"organization_id uuid\", \n      \"channel_type
+    varchar(128)\", \n      \"posts jsonb\", \n      \"keywords jsonb\", \n      \"reply_variations
+    jsonb\", \n      \"max_number_of_comment_replies bigint\", \n      \"automation_type
+    varchar(128)\", \n      \"excluded_keywords jsonb\", \n      \"match_type varchar(128)\",
+    \n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Feature_Flow\",\n
+    \   \"field_file\": \"organization_feature_flow_field_file\",\n    \"schema\":
+    [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc
+    timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n
+    \     \"organization_id uuid\",\n      \"feature_name varchar(32)\",\n      \"status
+    varchar(32)\",\n      \"current_step_name varchar(1024)\",\n      \"current_step_status
+    varchar(32)\",\n      \"meta_info jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n
+    \ },\n  {\n     \"table_name\": \"Whatsapp_Flow\",\n     \"field_file\": \"whatsapp_flow_field_file\",\n
+    \    \"schema\": [\n       \"id uuid\",\n       \"created_at_utc timestamp\",\n
+    \      \"modified_at_utc timestamp\",\n       \"is_deleted boolean\",\n       \"created_by_user_id
+    uuid\",\n       \"organization_id uuid\",\n       \"flow_id varchar(32)\",\n       \"name
+    varchar(256)\",\n       \"status varchar(256)\",\n       \"categories varchar(256)\",\n
+    \      \"json_version jsonb\",\n       \"num_responses bigint\",\n       \"source
+    varchar(64)\",\n       \"PRIMARY KEY (id)\"\n     ]\n  },\n  {\n     \"table_name\":
+    \"Crm_Analytics\",\n     \"field_file\": \"crm_analytics_field_file\",\n     \"schema\":
+    [\n       \"id uuid\",\n       \"is_deleted boolean\",\n       \"created_at_utc
+    timestamp\",\n       \"modified_at_utc timestamp\",\n       \"created_by_user_id
+    uuid\",\n       \"analytics_type varchar(128)\",\n       \"organization_id uuid\",\n
+    \      \"field_key text\",\n       \"field_value bigint\",\n       \"PRIMARY KEY
+    (id)\"\n     ]\n  },\n  {\n     \"table_name\": \"Diff_Tracker\",\n     \"field_file\":
+    \"diff_tracker_field_file\",\n     \"schema\": [\n       \"id uuid\",\n       \"is_deleted
+    boolean\",\n       \"created_at_utc timestamp\",\n       \"modified_at_utc timestamp\",\n
+    \      \"created_by_user_id uuid\",\n       \"model_name varchar(128)\",\n       \"model_id
+    varchar(128)\",\n       \"field_name varchar(128)\",\n       \"old_value varchar(128)\",\n
+    \      \"new_value varchar(128)\",\n       \"PRIMARY KEY (id)\"\n     ]\n  },\n
+    \ {\n     \"table_name\": \"Support_Insights\",\n     \"field_file\": \"support_insights_field_file\",\n
+    \    \"schema\": [\n        \"id uuid\",\n        \"is_deleted boolean\",\n        \"created_at_utc
+    timestamp\",\n        \"modified_at_utc timestamp\",\n        \"created_by_user_id
+    uuid\",\n        \"ticket_id varchar(128)\",\n        \"organization_id uuid\",\n
+    \       \"closed_at timestamp\",\n        \"link varchar(512)\",\n        \"description
+    varchar(10000)\",\n        \"summary varchar(10000)\",\n        \"thread_count
+    integer\",\n        \"sentiment varchar(128)\",\n        \"category varchar(128)\",\n
+    \       \"problem_areas JSONB\",\n        \"PRIMARY KEY (id)\"\n      ]\n   },\n
+    \  {\n     \"table_name\": \"User_Engagement\",\n     \"field_file\": \"user_engagement_field_file\",\n
+    \    \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc
+    timestamp\",\n\t\"organization_id uuid\",\n\t\"user_id uuid\",\n\t\"current_active_organization_subscription_id
+    uuid\",\n\t\"type varchar(64)\",\n\t\"feature varchar(128)\",\n\t\"sub_feature
+    varchar(128)\",\n\t\"consent boolean\",\n\t\"text text\",\n\t\"star_rating integer\",\n\t\"attachments
+    jsonb\",\n\t\"preferred_training_slot varchar(128)\",\n\t\"local_timezone varchar(64)\",\n\t\"PRIMARY
+    KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"Copilot_Session\",\n
+    \    \"field_file\": \"copilot_session_field_file\",\n     \"schema\": [\n        \"id
+    uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc timestamp\",\n\t\"created_by_user_id
+    uuid\",\n        \"is_deleted boolean\",\n        \"organization_id uuid\",\n
+    \       \"component varchar(128)\",\n        \"user_timezone varchar(128)\",\n\t\"PRIMARY
+    KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"Copilot_Chat_Message\",\n
+    \    \"field_file\": \"copilot_messages_field_file\",\n     \"schema\": [\n        \"id
+    uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc timestamp\",\n\t\"created_by_user_id
+    uuid\",\n        \"is_deleted boolean\",\n        \"session_id uuid\",\n        \"role
+    varchar(128)\",\n        \"content text\",\n\t\"is_tool_called boolean\",\n\t\"tool_name
+    varchar(128)\",\n\t\"arguments text\",\n\t\"meta_data jsonb\",\n\t\"bot_message_id
+    varchar(128)\",\n\t\"PRIMARY KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\":
+    \"Copilot_Message_Feedback\",\n     \"field_file\": \"copilot_feedback_field_file\",\n
+    \    \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc
+    timestamp\",\n\t\"created_by_user_id uuid\",\n        \"is_deleted boolean\",\n
+    \       \"session_id uuid\",\n        \"copilot_chat_message_id uuid\",\n        \"rating
+    integer\",\n        \"feedback_text varchar(128)\",\n        \"attachments jsonb\",\n
+    \       \"organization_id uuid\",\n        \"PRIMARY KEY (id)\"\n      ]\n   },\n
+    \  {\n     \"table_name\": \"Organization_Onboarding\",\n     \"field_file\":
+    \"organization_onboarding_field_file\",\n     \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc
+    timestamp\",\n\t\"modified_at_utc timestamp\",\n        \"is_deleted boolean\",\n\t\"organization_id
+    uuid\",\n\t\"summary TEXT\",\n\t\"category varchar(256)\",\n\t\"sub_category varchar(256)\",\n\t\"free_credits_status
+    varchar(32)\",\n\t\"version varchar(32)\",\n\t\"data jsonb\",\n\t\"credits_amount
+    integer\",\n\t\"credits_expiry_at timestamp\",\n        \"PRIMARY KEY (id)\"\n
+    \     ]\n   },\n   {\n     \"table_name\": \"Customer_Calling_History\",\n     \"field_file\":
+    \"customer_calling_history_field_file\",\n     \"schema\": [\n        \"id uuid\",\n
+    \       \"created_at_utc timestamp\",\n        \"modified_at_utc timestamp\",\n
+    \       \"is_deleted boolean\",\n        \"organization_id uuid\",\n        \"customer_id
+    uuid\",\n        \"organization_channel_id uuid\",\n        \"agent_id uuid\",\n
+    \       \"call_duration_in_seconds integer\",\n        \"channel_type varchar(50)\",\n
+    \       \"call_type varchar(50)\",\n        \"call_start_time timestamp\",\n        \"call_end_time
+    timestamp\",\n        \"unique_call_id varchar(255)\",\n        \"ai_summary text\",\n
+    \       \"call_status varchar(50)\",\n        \"PRIMARY KEY (id)\"\n     ]\n   },\n
+    \ {\n     \"table_name\": \"AIIntentMatchState\",\n     \"field_file\": \"ai_intent_match_state_field_file\",\n
+    \    \"schema\": [\n        \"id uuid\",\n        \"is_deleted boolean\",\n        \"created_at_utc
+    timestamp\",\n        \"modified_at_utc timestamp\",\n        \"created_by_user_id
+    uuid\",\n        \"organization_id uuid\",\n        \"status varchar(32)\",\n
+    \       \"count_of_queries_attempted integer\",\n        \"count_of_queries_exhausted
+    integer\",\n        \"enabled_at_utc timestamp\",\n        \"disabled_at_utc timestamp\",\n
+    \       \"active_automations_count integer\",\n        \"max_allowed integer\",\n
+    \       \"PRIMARY KEY (id)\"\n     ]\n   },\n   {\n     \"table_name\": \"Campaign\",\n
+    \    \"field_file\": \"campaign_field_file\",\n     \"schema\": [\n       \"id
+    uuid\",\n       \"created_at_utc timestamp\",\n       \"modified_at_utc timestamp\",\n
+    \      \"created_by_user_id uuid\",\n       \"is_deleted boolean\",\n       \"organization_id
+    uuid\",\n       \"name varchar(256)\",\n       \"msgs_queued integer\",\n       \"msgs_sent
+    integer\",\n       \"msgs_delivered integer\",\n       \"msgs_seen integer\",\n
+    \      \"template_id varchar(64)\",\n       \"campaign_status varchar(32)\",\n
+    \      \"campaign_type varchar(32)\",\n       \"campaign_one_time_type varchar(32)\",\n
+    \      \"filter_clause text\",\n       \"send_at_utc timestamp\",\n       \"send_until_utc
+    timestamp\",\n       \"completed_at_utc timestamp\",\n       \"merge_variables_header
+    varchar(50000)\",\n       \"merge_variables_body varchar(50000)\",\n       \"merge_variables_footer
+    varchar(50000)\",\n       \"msgs_failed bigint\",\n       \"task_id varchar(64)\",\n
+    \      \"msgs_attempted integer\",\n       \"reply_rules varchar(10000)\",\n       \"failure_reason
+    text\",\n       \"is_click_tracking_enabled boolean\",\n       \"retry_expire_at_utc
+    timestamp\",\n       \"meta_data JSONB\",\n       \"fallback_enabled boolean\",\n
+    \      \"primary_campaign_id uuid\",\n       \"channel_type varchar(256)\",\n
+    \      \"PRIMARY KEY (id)\"\n     ] \n   }\n]\n"
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"combined_table_config_3.json":"[\n  {\n    \"table_name\": \"DailyAIConversationStats\",\n    \"field_file\": \"daily_ai_conv_stats_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"total_conversations integer\",\n      \"total_ai_messages integer\",\n      \"total_agentic_messages integer\",\n      \"total_trigger_messages integer\",\n      \"total_handoffs integer\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Ctwa_Funnel\",\n    \"field_file\": \"ctwa_funnel_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n      \"ad_id varchar(256)\",\n      \"step_number integer\",\n      \"auto_replies_ids JSONB\",\n      \"events_ids JSONB\",\n      \"calculate_roas_in_days integer\",\n      \"cost_per_lead float8\",\n      \"step_name varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Ctwa_Ads\",\n    \"field_file\": \"ctwa_ads_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n      \"organization_name varchar(256)\",\n      \"vertical varchar(256)\",\n      \"partner_id uuid\",\n      \"partner_name varchar(256)\",\n      \"payment_gateway varchar(50)\",\n      \"subscription_plan varchar(100)\",\n      \"subscription_value float8\",\n      \"customer_username varchar(256)\",\n      \"customer_email varchar(256)\",\n      \"customer_phone varchar(80)\",\n      \"ad_id varchar(256)\",\n      \"ad_url varchar(256)\",\n      \"ad_type varchar(256)\",\n      \"is_conversation_archived boolean\",\n      \"is_picked_up_by_an_agent boolean\",\n      \"ad_title varchar(256)\",\n      \"convesation_starter varchar(4096)\",\n      \"conversion_value float8\",\n      \"step_number integer\",\n      \"event_id uuid\",\n      \"event_name varchar(256)\",\n      \"auto_reply_id uuid\",\n      \"auto_reply_name varchar(4096)\",\n      \"chat_id uuid\",\n      \"customer_id uuid\",\n      \"conversion_category text\",\n      \"currency text\",\n      \"conversion_source varchar(64)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Ctwa_Ad_Campaign\",\n    \"field_file\": \"ctwa_ad_campaign_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"name varchar(56)\",\n      \"campaign_budget float8\",\n      \"campaign_start_date timestamp\",\n      \"campaign_end_date timestamp\",\n      \"status varchar(32)\",\n      \"creatives jsonb\",\n      \"targeting jsonb\",\n      \"engagement_config jsonb\",\n      \"conversions jsonb\",\n      \"fb_page_id varchar(56)\",\n      \"fb_ad_account_id varchar(56)\",\n      \"rejection_reason varchar(256)\",\n      \"fb_ad_campaign_id varchar(56)\",\n      \"fb_ad_set_id varchar(56)\",\n      \"fb_ad_creative_id varchar(56)\",\n      \"fb_ad_id varchar(56)\",\n      \"ad_type varchar(56)\",\n      \"create_instagram_ad boolean\",\n      \"exchange_rate varchar(56)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Ctwa_Page\",\n    \"field_file\": \"ctwa_page_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"display_pic_url varchar(2048)\",\n      \"cover_pic_url varchar(2048)\",\n      \"description varchar(256)\",\n      \"name varchar(56)\",\n      \"page_categories jsonb\",\n      \"status varchar(32)\",\n      \"fb_page_id varchar(56)\",\n      \"address varchar(256)\",\n      \"city varchar(56)\",\n      \"state varchar(56)\",\n      \"country varchar(56)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Message_Template\",\n    \"field_file\": \"message_template_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"name varchar(1024)\",\n      \"language varchar(128)\",\n      \"category varchar(512)\",\n      \"sub_category varchar(256)\",\n      \"template_category_label varchar(512)\",\n      \"header_format varchar(128)\",\n      \"display_name varchar(1024)\",\n      \"organization_id uuid\",\n      \"header varchar(512)\",\n      \"header_handle jsonb\",\n      \"header_handle_file_url varchar(1024)\",\n      \"header_handle_file_name varchar(128)\",\n      \"header_text jsonb\",\n      \"body text\",\n      \"body_text jsonb\",\n      \"footer text\",\n      \"buttons jsonb\",\n      \"button_text jsonb\",\n      \"allow_category_change boolean\",\n      \"limited_time_offer jsonb\",\n      \"carousel_cards jsonb\",\n      \"autosubmitted_for varchar(128)\",\n      \"approval_status varchar(128)\",\n      \"wa_template_id varchar(128)\",\n      \"is_archived boolean\",\n      \"channel_type varchar(128)\",\n      \"is_click_tracking_enabled boolean\",\n      \"allow_delete boolean\",\n      \"rejection_reason varchar(512)\",\n      \"is_mpm boolean\",\n      \"is_carousel boolean\",\n      \"sample_template_id uuid\",\n      \"meta_data jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Invoice\",\n    \"field_file\": \"organization_invoice_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"organization_name varchar(128)\",\n      \"payment_gateway varchar(32)\",\n      \"plan_name varchar(64)\",\n      \"subscription_amount float8\",\n      \"unique_users bigint\",\n      \"usages_cost float8\",\n      \"proration_cost float8\",\n      \"invoice_date varchar(128)\",\n      \"billing_start_date varchar(128)\",\n      \"billing_end_date varchar(128)\",\n      \"plan_change_date varchar(128)\",\n      \"subscription_end_date varchar(128)\",\n      \"charge_id varchar(512)\",\n      \"total_amount float8\",\n      \"invoice_type varchar(32)\",\n      \"invoice_url varchar(500)\",\n      \"pg_invoice_id varchar(32)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Credit_Transaction\",\n    \"field_file\": \"credit_transaction_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"transaction_type varchar(32)\",\n      \"amount float8\",\n      \"current_balance float8\",\n      \"currency varchar(32)\",\n      \"invoice_url varchar(2048)\",\n      \"description varchar(2048)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Partner\",\n    \"field_file\": \"partner_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"name varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Subscription\",\n    \"field_file\": \"subscription_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"name varchar(256)\",\n      \"is_active boolean\",\n      \"value integer\",\n      \"payment_gateway varchar(32)\",\n      \"pg_subscription_id varchar(64)\",\n      \"pg_metered_subscription_id varchar(64)\",\n      \"currency varchar(64)\",\n      \"usage_rules varchar(10000)\",\n      \"notification_limit integer\",\n      \"user_limit integer\",\n      \"partner_id uuid\",\n      \"is_default_plan boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization\",\n    \"field_file\": \"organization_field_file\",\n    \"schema\": [\n     \"city varchar(128)\",\n     \"address_line_1 varchar(256)\",\n     \"address_line_2 varchar(256)\",\n     \"state varchar(128)\",\n     \"pincode varchar(10)\",\n     \"stripe_customer_id varchar(128)\",\n     \"is_payment_enabled boolean\",\n     \"country varchar(50)\",\n     \"gst_registration_certificate_url varchar(1024)\",\n     \"gst_number varchar(64)\",\n     \"legal_business_name varchar(512)\",\n     \"email varchar(256)\",\n     \"phone varchar(50)\",\n     \"country_code varchar(50)\",\n     \"subscription_plan_selected_on_sign_up varchar(50)\",\n     \"company_type varchar(128)\",\n     \"company_website varchar(1024)\",\n     \"id uuid\",\n     \"created_at_utc timestamp\",  \n     \"modified_at_utc timestamp\",  \n     \"created_by_user_id uuid\",  \n     \"is_deleted boolean\",  \n     \"name varchar(256)\",  \n     \"subdomain varchar(128)\",  \n     \"only_wa_notifications boolean\",  \n     \"FB_business_manager_id varchar(256)\",  \n     \"onboarding_status varchar(128)\",  \n     \"FB_business_verification_status varchar(50)\",  \n     \"FB_business_verification_route varchar(64)\",\n     \"FB_verification_rejection_reasons jsonb\",\n     \"wa_api_approval_status varchar(64)\",\n     \"waba_id varchar(128)\",\n     \"templates_last_synced_at_utc timestamp\",\n     \"utm_campaign varchar(128)\",\n     \"utm_content varchar(128)\",\n     \"utm_medium varchar(128)\",\n     \"utm_source varchar(128)\",\n     \"utm_term varchar(256)\",\n     \"credit_balance float8\",\n     \"currency varchar(8)\",\n     \"is_embedded_signup_enabled boolean\",\n     \"signup_source varchar(32)\",\n     \"gclid varchar(1024)\",\n     \"fbclid varchar(2048)\",\n     \"designation varchar(256)\",\n     \"company_location varchar(256)\",\n     \"partner_id uuid\",\n     \"shopify_app_type varchar(32)\",\n     \"max_revenue varchar(32)\",\n     \"min_revenue varchar(32)\",\n     \"revenue_currency varchar(8)\",\n     \"is_mandate_migrated boolean\",\n     \"is_load_balance_enabled boolean\",\n     \"payment_gateway_customer_id varchar(256)\",\n     \"org_type varchar(128)\",\n     \"waba_policy_violation_status varchar(64)\",\n     \"last_waba_policy_violation_status_updated_at timestamp\",\n     \"activate_channel_instagram boolean\",\n     \"payment_gateway varchar(32)\",\n     \"PRIMARY KEY (id)\" \n    ]\n  },\n  {\n    \"table_name\": \"Catalog\",\n    \"field_file\": \"catalog_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"fb_catalog_id varchar(128)\",\n      \"organization_id uuid\",\n      \"sync_status varchar(32)\",\n      \"last_sync_at timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Collection\",\n    \"field_file\": \"collection_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"name varchar(512)\",\n      \"fb_collection_id varchar(128)\",\n      \"filter varchar(10000000)\",\n      \"body_text varchar(1024)\",\n      \"is_selected boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"ListMessage\",\n    \"field_file\": \"list_message_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"name text\",\n      \"message_content varchar(10000)\",\n      \"body_text varchar(1024)\",\n      \"header_text varchar(64)\",\n      \"footer_text varchar(64)\",\n      \"button_text varchar(128)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Product_Collection\",\n    \"field_file\": \"product_collection_field_file\",\n    \"schema\": [\n      \"id bigint\",\n      \"product_id uuid\",\n      \"collection_id uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"User\",\n    \"metabase_table_name\": \"User_table\",\n    \"field_file\": \"user_field_file\",\n    \"schema\": [\n      \"last_login timestamp\",\n      \"is_superuser bool\",\n      \"is_staff bool\",\n      \"is_active bool\",\n      \"date_joined timestamp\",\n      \"id UUID\",\n      \"first_name varchar(1024)\",\n      \"last_name varchar(1024)\",\n      \"username varchar(100)\",\n      \"email varchar(100)\",\n      \"phone varchar(100)\",\n      \"login_method varchar(100)\",\n      \"first_logged_in_at_utc timestamp\",\n      \"timezone_offset_in_mins integer\",\n      \"created_at_utc timestamp\",\n      \"last_logged_in_at_utc timestamp\",\n      \"is_deleted bool\",\n      \"email_address_verification_key varchar(30)\",\n      \"email_address_verification_key_expires_at_utc timestamp\",\n      \"is_email_address_verified bool\",\n      \"email_address_verified_at_utc timestamp\",\n      \"pwd_reset_key varchar(30)\",\n      \"pwd_reset_key_expires_at_utc timestamp\",\n      \"country_code varchar(10)\",\n      \"referral_code varchar(128)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Business_Profile\",\n    \"field_file\": \"business_profile_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_channel_id uuid\",\n      \"address varchar(500)\",\n      \"description varchar(2000)\",\n      \"email varchar(64)\",\n      \"vertical varchar(200)\",\n      \"websites varchar(1000)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Channel\",\n    \"field_file\": \"organization_channel_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"channel_type varchar(32)\",\n      \"phone_number varchar(16)\",\n      \"channel_phone_number varchar(64)\",\n      \"country_code varchar(16)\",\n      \"container_base_url varchar(256)\",\n      \"container_admin_password varchar(64)\",\n      \"container_admin_username varchar(64)\",\n      \"container_namespace varchar(256)\",\n      \"wa_approval_status varchar(32)\",\n      \"otp_verified_at_utc timestamp\",\n      \"container_certificate varchar(2560)\",\n      \"profile_photo_url varchar(512)\",\n      \"display_name varchar(256)\",\n      \"messaging_limit varchar(1000)\",\n      \"is_container_config_done boolean\",\n      \"container_pin varchar(256)\",\n      \"whatsapp_quality_status varchar(16)\",\n      \"container_status varchar(32)\",\n      \"mm_lite_enabled boolean\",\n      \"storefront_status varchar(16)\",\n      \"account_identifier varchar(64)\",\n      \"status varchar(64)\",\n      \"signup_type varchar(64)\",\n      \"metadata JSONB DEFAULT '{}'\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_subscription\",\n    \"field_file\": \"organization_subscription_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"subscription_id uuid\",\n      \"organization_id uuid\",\n      \"subscription_start_date timestamp\",\n      \"subscription_end_date timestamp\",\n      \"next_payment_date timestamp\",\n      \"interakt_pg_subscription_id varchar(128)\",\n      \"payment_gateway varchar(48)\",\n      \"e_mandate_id varchar(128)\",\n      \"e_mandate_status varchar(32)\",\n      \"payment_gateway_subscription_status varchar(128)\",\n      \"interakt_subscription_status varchar(128)\",\n      \"churn_reason varchar(128)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Addon_Subscription\",\n    \"field_file\": \"organization_addon_subscription_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"app_id uuid\",\n      \"organization_id uuid\",\n      \"addon_id uuid\",\n      \"addon_code varchar(128)\",\n      \"status varchar(64)\",\n      \"price float8\",\n      \"currency varchar(8)\",\n      \"interval varchar(64)\",\n      \"deactivated_at timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Sandbox\",\n    \"field_file\": \"organization_sandbox_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"sandbox_code varchar(32)\",\n      \"sandbox_channel_phone_number varchar(32)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_App\",\n    \"field_file\": \"organization_app_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n      \"name varchar(128)\",\n      \"active boolean\",\n      \"attributes JSONB\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Wallet\",\n    \"field_file\": \"wallet_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n      \"balance float8\",\n      \"currency varchar(32)\",\n      \"parked_balance float8\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Orders\",\n    \"field_file\": \"orders_field_file\",\n    \"schema\": [\n      \"id int\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"customer_id uuid\",\n      \"address_id uuid\",\n      \"cart_received_at timestamp\",\n      \"order_placed_at timestamp\",\n      \"cart_value float8\",\n      \"discount float8\",\n      \"shipping_charge float8\",\n      \"total_amount float8\",\n      \"currency varchar(3)\",\n      \"payment_link varchar(1024)\",\n      \"cod_confirmation_link varchar(1024)\",\n      \"payment_gateway varchar(32)\",\n      \"order_status varchar(32)\",\n      \"payment_status varchar(32)\",\n      \"fulfillment_status varchar(32)\",\n      \"platform varchar(32)\",\n      \"cart_platform varchar(32)\",\n      \"order_platform varchar(32)\",\n      \"order_driver varchar(32)\",\n      \"platform_order_number varchar(512)\",\n      \"campaign_id uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Billing\",\n    \"field_file\": \"organization_billing_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"description varchar(1024)\",\n      \"currency varchar(8)\",\n      \"status varchar(32)\",\n      \"total_amount float8\",\n      \"credits_used float8\",\n      \"amount_due float8\",\n      \"charge_id varchar(256)\",\n      \"payment_gateway varchar(48)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Welcome_Message\",\n    \"field_file\": \"organization_welcome_message_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"is_enabled boolean\",\n      \"message text\",\n      \"media_url varchar(8192)\",\n      \"variable_fallback_values text\",\n      \"is_list_message_enabled boolean\",\n      \"list_message_name varchar(128)\",\n      \"wa_flow_setup text\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Compliance_Info\",\n    \"field_file\": \"compliance_info_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"entity_name varchar(512)\",\n      \"entity_type varchar(128)\",\n      \"entity_type_custom varchar(256)\",\n      \"customer_care_details jsonb\",\n      \"grievance_officer_details jsonb\",\n      \"is_registered boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Delayed_Message\",\n    \"field_file\": \"organization_delayed_message_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"message text\",\n      \"media_url varchar(8192)\",\n      \"variable_fallback_values text\",\n      \"is_enabled boolean\",\n      \"delay_by_seconds bigint\",\n      \"enabled_for_new_user boolean\",\n      \"enabled_for_existing_user boolean\",\n      \"is_list_message_enabled boolean\",\n      \"list_message_name varchar(128)\",\n      \"wa_flow_setup jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Out_Of_Office\",\n    \"field_file\": \"organization_out_of_office_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"is_enabled boolean\",\n      \"weekly_rule jsonb\",\n      \"message text\",\n      \"media_url varchar(8192)\",\n      \"variable_fallback_values text\",\n      \"is_list_message_enabled boolean\",\n      \"list_message_name varchar(128)\",\n      \"wa_flow_setup jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Tag\",\n    \"field_file\": \"organization_tag_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"name varchar(256)\",\n      \"color_hex varchar(8)\",\n      \"is_auto_user_segment boolean\",\n      \"rules jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Chat_Widget\",\n    \"field_file\": \"chat_widget_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"widget_token varchar(32)\",\n      \"used_on text\",\n      \"form_factor varchar(32)\",\n      \"rendering_device varchar(32)\",\n      \"widget_position_desktop varchar(32)\",\n      \"widget_position_mobile varchar(32)\",\n      \"color_type varchar(32)\",\n      \"color_hex_from varchar(32)\",\n      \"color_hex_to varchar(32)\",\n      \"button_text varchar(128)\",\n      \"image_url varchar(256)\",\n      \"prefilled_message varchar(256)\",\n      \"bottom_spacing_desktop int\",\n      \"bottom_spacing_mobile int\",\n      \"side_spacing_desktop int\",\n      \"side_spacing_mobile int\",\n      \"greeting text\",\n      \"introduction text\",\n      \"channel_id uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"BULK_UPLOAD_JOB\",\n    \"field_file\": \"bulk_upload_job_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"started_at_utc timestamp\",\n      \"completed_at_utc timestamp\",\n      \"status varchar(32)\",\n      \"total_count int\",\n      \"success_count int\",\n      \"failure_count int\",\n      \"metadata jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"ROLE\",\n    \"field_file\": \"role_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"name varchar(256)\",\n      \"phone_number_hide boolean\",\n      \"users_all_view boolean\",\n      \"users_export_users boolean\",\n      \"users_add_contacts boolean\",\n      \"users_add_tags boolean\",\n      \"inbox_all_chats boolean\",\n      \"inbox_unassigned_chats boolean\",\n      \"notifications_create_new_campaign boolean\",\n      \"settings_billing_details boolean\",\n      \"settings_team_management boolean\",\n      \"settings_developer_settings boolean\",\n      \"settings_setup_your_business_account boolean\",\n      \"analytics_all_view boolean\",\n      \"analytics_export_data boolean\",\n      \"settings_invoice_history boolean\",\n      \"settings_subscription_details boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Member\",\n    \"field_file\": \"member_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"user_id uuid\",\n      \"organization_id uuid\",\n      \"role text\",\n      \"widget_preferences text\",\n      \"all_users_columns_preferences text\",\n      \"user_journey text\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"CUSTOMER_SHOPIFY_ORDER\",\n    \"field_file\": \"customer_shopify_order_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"customer_id uuid\",\n      \"shopify_order_id varchar(128)\",\n      \"shopify_store_name varchar(256)\",\n      \"confirmation_response varchar(16)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"ORDER_ITEM\",\n    \"field_file\": \"order_item_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"order_id varchar(128)\",\n      \"name varchar(512)\",\n      \"price float8\",\n      \"currency varchar(3)\",\n      \"quantity int\",\n      \"amount float8\",\n      \"retailer_id varchar(128)\",\n      \"shipped_at timestamp\",\n      \"delivered_at timestamp\",\n      \"image_url varchar(4096)\",\n      \"url varchar(4096)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Bot\",\n    \"field_file\": \"bot_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"name varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Bot\",\n    \"field_file\": \"organization_bot_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"organization_channel_id uuid\",\n      \"bot_id uuid\",\n      \"status varchar(32)\",\n      \"bot_messages jsonb\",\n      \"trigger_message_content_type varchar(32)\",\n      \"keywords jsonb\",\n      \"attributes jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Sample_Campaign\",\n    \"field_file\": \"sample_campaign_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"name varchar(256)\",\n      \"description text\",\n      \"template_name varchar(64)\",\n      \"template_language varchar(32)\",\n      \"visibility_rules jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Campaign_Goal\",\n    \"field_file\": \"campaign_goal_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"campaign_id uuid\",\n      \"organization_id uuid\",\n      \"status varchar(128)\",\n      \"event_name varchar(128)\",\n      \"conversion_value_event_trait varchar(128)\",\n      \"conversion_deadline_in_seconds bigint\",\n      \"total_conversion_count int\",\n      \"total_conversion_value float8\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Sample_Message_Template\",\n    \"field_file\": \"sample_message_template_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"name varchar(512)\",\n      \"language varchar(128)\",\n      \"category varchar(256)\",\n      \"template_category_label varchar(256)\",\n      \"header_format varchar(128)\",\n      \"header varchar(512)\",\n      \"header_handle jsonb\",\n      \"header_handle_file_url varchar(1024)\",\n      \"header_handle_file_name varchar(128)\",\n      \"header_text jsonb\",\n      \"body text\",\n      \"body_text jsonb\",\n      \"footer text\",\n      \"buttons jsonb\",\n      \"button_text jsonb\",\n      \"organization_id varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Product_Batch\",\n    \"field_file\": \"product_batch_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"batch_handle varchar(256)\",\n      \"metadata jsonb\",\n      \"status varchar(32)\",\n      \"product_id uuid\",\n      \"fb_catalog_id varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Workflows\",\n    \"field_file\": \"organization_workflows_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"organization_id uuid\",\n      \"name varchar(4096)\",\n      \"is_advanced_workflow boolean\",\n      \"is_webhook_workflow boolean\",\n      \"workflow_setup_category varchar(64)\",\n      \"is_active boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Workflow_Steps\",\n    \"field_file\": \"workflow_steps_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"workflow_id uuid\",\n      \"step_number int\",\n      \"message text\",\n      \"message_type varchar(256)\",\n      \"variable_fallback_values text\",\n      \"buttons jsonb\",\n      \"list_message_name varchar(256)\",\n      \"user_trait_name varchar(128)\",\n      \"type varchar(256)\",\n      \"step_data jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Workflow_Sample_Templates\",\n    \"field_file\": \"workflow_sample_templates_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"name varchar(256)\",\n      \"category varchar(256)\",\n      \"template_data jsonb\",\n      \"pre_flow_name varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Partner_Requests\",\n    \"field_file\": \"partner_requests_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"is_deleted boolean\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"partner_id uuid\",\n      \"organization_id uuid\",\n      \"request_type varchar(32)\",\n      \"status varchar(32)\",\n      \"amount float8\",\n      \"subscription_id uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Routing\",\n    \"field_file\": \"organization_routing_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"directive jsonb\",\n      \"assignees jsonb\",\n      \"name varchar(256)\",\n      \"created_by_user_id uuid\",\n      \"organization_id uuid\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"tally_chat_message_report\",\n    \"field_file\": \"tally_chat_message_report_field_file\",\n    \"schema\": [\n     \"id uuid\",\n     \"created_at_utc timestamp\",\n     \"modified_at_utc timestamp\",\n     \"is_deleted boolean\",\n     \"organization_id varchar(256)\",\n     \"tsn_id varchar(256)\",\n     \"org_name varchar(256)\",\n     \"current_subscription_plan varchar(256)\",\n     \"channel_number varchar(256)\",\n     \"country varchar(256)\",\n     \"number_of_message_recieved_from_customer varchar(256)\",\n     \"number_of_sent_message_for_agent varchar(256)\",\n     \"number_of_delivered_message_for_agent varchar(256)\",\n     \"number_of_read_message_for_agent varchar(256)\",\n     \"number_of_failed_message_for_agent varchar(256)\",\n     \"number_of_sent_message_for_public_api varchar(256)\",\n     \"number_of_delivered_message_for_public_api varchar(256)\",\n     \"number_of_read_message_for_public_api varchar(256)\",\n     \"number_of_failed_message_for_public_api varchar(256)\",\n     \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"tally_failure_message_report\",\n    \"field_file\": \"tally_failure_message_report_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id varchar(256)\",\n      \"tsn_id varchar(256)\",\n      \"org_name varchar(256)\",\n      \"current_subscription_plan varchar(256)\",\n      \"channel_number varchar(256)\",\n      \"country varchar(256)\",\n      \"failure_message varchar(256)\",\n      \"failure_count varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"campaign_clicks_count\",\n    \"field_file\": \"campaign_clicks_count_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"campaign_id uuid\",\n      \"template_id uuid\",\n      \"click_type varchar(16)\",\n      \"link text\",\n      \"button_text varchar(128)\",\n      \"total_clicks integer\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"organization_nudge\",\n    \"field_file\": \"organization_nudge_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"nudge_id uuid\",\n      \"meta_data jsonb\",\n      \"is_read boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"nudge_repository\",\n    \"field_file\": \"nudge_repository_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"name varchar(1028)\",\n      \"category varchar(128)\",\n      \"title varchar(128)\",\n      \"body varchar(1028)\",\n      \"cta_text varchar(128)\",\n      \"cta_url varchar(1024)\",\n      \"applicable_partner_ids jsonb\",\n      \"applicable_sub_plan_ids jsonb\",\n      \"organization_id varchar(128)\",\n      \"meta_data jsonb\",\n      \"eta timestamp\",\n      \"expiry_time timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"zocket_meta_ad_mappings\",\n    \"field_file\": \"zocket_meta_ad_mappings_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id varchar(256)\",\n      \"workflow_id varchar(256)\",\n      \"meta_ad_id varchar(256)\",\n      \"meta_ad_name varchar(256)\",\n      \"zocket_campaign_name varchar(256)\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"CodToPrepaidConfig\",\n    \"field_file\": \"codtoprepaidconfig_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"order_platform varchar(32)\",\n      \"platform_configurations jsonb\",\n      \"discount_on_conversion jsonb\",\n      \"prepayment_option_expires_in jsonb\",\n      \"emails_to_notify_post_prepayment jsonb\",\n      \"is_enabled boolean\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Automation_Stats\",\n    \"field_file\": \"automation_stats_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"num_faq_messages_wa bigint\",\n      \"num_faq_messages_ig bigint\",\n      \"num_workflow_messages bigint\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Marketing_Leads\",\n    \"field_file\": \"marketing_leads_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"event_id varchar(256)\",\n      \"event_description varchar(256)\",\n      \"user_id varchar(256)\",\n      \"user_first_name varchar(256)\",\n      \"user_last_name varchar(256)\",\n      \"user_phone_number varchar(32)\",\n      \"user_email varchar(256)\",\n      \"user_industry varchar(256)\",\n      \"user_event_attended boolean\",\n      \"user_meta_data varchar(256)\",\n      \"user_country varchar(256)\",\n      \"user_org varchar(256)\",\n      \"user_country_code varchar(256)\",\n      \"user_job_title varchar(256)\",\n      \"user_join_url varchar(256)\",\n      \"event_date_timestamp_ist varchar(256)\",\n      \"event_date_timestamp timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"flow_message_response\",\n    \"field_file\": \"flow_message_response_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"campaign_id uuid\",\n      \"customer_id uuid\",\n      \"flow_id text\",\n      \"flow_response jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Lifecycle\",\n    \"field_file\": \"organization_lifecycle_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"name varchar(256)\",\n      \"legal_business_name varchar(512)\",\n      \"waba_id varchar(128)\",\n      \"partner varchar(64)\",\n      \"payment_gateway varchar(32)\",\n      \"signup_date timestamp\",\n      \"free_trial_end_date timestamp\",\n      \"first_paid_sub_start_date timestamp\",\n      \"previous_plan varchar(128)\",\n      \"previous_plan_renewal_cycle varchar(128)\",\n      \"previous_sub_start_date timestamp\",\n      \"previous_sub_end_date timestamp\",\n      \"current_plan varchar(128)\",\n      \"current_plan_renewal_cycle varchar(128)\",\n      \"current_sub_start_date timestamp\",\n      \"current_sub_end_date timestamp\",\n      \"latest_upgrade_date timestamp\",\n      \"latest_downgrade_date timestamp\",\n      \"latest_migrated_date timestamp\",\n      \"churn_date timestamp\",\n      \"reverse_churn_date timestamp\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"FAQ_Comment_Mapping\",\n    \"field_file\": \"faq_comment_mapping_field_file\",\n    \"schema\": [\n      \"id uuid\", \n      \"created_at_utc timestamp\", \n      \"modified_at_utc timestamp\", \n      \"is_deleted boolean\", \n      \"organization_id uuid\", \n      \"channel_type varchar(128)\", \n      \"posts jsonb\", \n      \"keywords jsonb\", \n      \"reply_variations jsonb\", \n      \"max_number_of_comment_replies bigint\", \n      \"automation_type varchar(128)\", \n      \"excluded_keywords jsonb\", \n      \"match_type varchar(128)\", \n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n    \"table_name\": \"Organization_Feature_Flow\",\n    \"field_file\": \"organization_feature_flow_field_file\",\n    \"schema\": [\n      \"id uuid\",\n      \"created_at_utc timestamp\",\n      \"modified_at_utc timestamp\",\n      \"created_by_user_id uuid\",\n      \"is_deleted boolean\",\n      \"organization_id uuid\",\n      \"feature_name varchar(32)\",\n      \"status varchar(32)\",\n      \"current_step_name varchar(1024)\",\n      \"current_step_status varchar(32)\",\n      \"meta_info jsonb\",\n      \"PRIMARY KEY (id)\"\n    ]\n  },\n  {\n     \"table_name\": \"Whatsapp_Flow\",\n     \"field_file\": \"whatsapp_flow_field_file\",\n     \"schema\": [\n       \"id uuid\",\n       \"created_at_utc timestamp\",\n       \"modified_at_utc timestamp\",\n       \"is_deleted boolean\",\n       \"created_by_user_id uuid\",\n       \"organization_id uuid\",\n       \"flow_id varchar(32)\",\n       \"name varchar(256)\",\n       \"status varchar(256)\",\n       \"categories varchar(256)\",\n       \"json_version jsonb\",\n       \"num_responses bigint\",\n       \"source varchar(64)\",\n       \"PRIMARY KEY (id)\"\n     ]\n  },\n  {\n     \"table_name\": \"Crm_Analytics\",\n     \"field_file\": \"crm_analytics_field_file\",\n     \"schema\": [\n       \"id uuid\",\n       \"is_deleted boolean\",\n       \"created_at_utc timestamp\",\n       \"modified_at_utc timestamp\",\n       \"created_by_user_id uuid\",\n       \"analytics_type varchar(128)\",\n       \"organization_id uuid\",\n       \"field_key text\",\n       \"field_value bigint\",\n       \"PRIMARY KEY (id)\"\n     ]\n  },\n  {\n     \"table_name\": \"Diff_Tracker\",\n     \"field_file\": \"diff_tracker_field_file\",\n     \"schema\": [\n       \"id uuid\",\n       \"is_deleted boolean\",\n       \"created_at_utc timestamp\",\n       \"modified_at_utc timestamp\",\n       \"created_by_user_id uuid\",\n       \"model_name varchar(128)\",\n       \"model_id varchar(128)\",\n       \"field_name varchar(128)\",\n       \"old_value varchar(128)\",\n       \"new_value varchar(128)\",\n       \"PRIMARY KEY (id)\"\n     ]\n  },\n  {\n     \"table_name\": \"Support_Insights\",\n     \"field_file\": \"support_insights_field_file\",\n     \"schema\": [\n        \"id uuid\",\n        \"is_deleted boolean\",\n        \"created_at_utc timestamp\",\n        \"modified_at_utc timestamp\",\n        \"created_by_user_id uuid\",\n        \"ticket_id varchar(128)\",\n        \"organization_id uuid\",\n        \"closed_at timestamp\",\n        \"link varchar(512)\",\n        \"description varchar(10000)\",\n        \"summary varchar(10000)\",\n        \"thread_count integer\",\n        \"sentiment varchar(128)\",\n        \"category varchar(128)\",\n        \"problem_areas JSONB\",\n        \"PRIMARY KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"User_Engagement\",\n     \"field_file\": \"user_engagement_field_file\",\n     \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc timestamp\",\n\t\"organization_id uuid\",\n\t\"user_id uuid\",\n\t\"current_active_organization_subscription_id uuid\",\n\t\"type varchar(64)\",\n\t\"feature varchar(128)\",\n\t\"sub_feature varchar(128)\",\n\t\"consent boolean\",\n\t\"text text\",\n\t\"star_rating integer\",\n\t\"attachments jsonb\",\n\t\"preferred_training_slot varchar(128)\",\n\t\"local_timezone varchar(64)\",\n\t\"PRIMARY KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"Copilot_Session\",\n     \"field_file\": \"copilot_session_field_file\",\n     \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc timestamp\",\n\t\"created_by_user_id uuid\",\n        \"is_deleted boolean\",\n        \"organization_id uuid\",\n        \"component varchar(128)\",\n        \"user_timezone varchar(128)\",\n\t\"PRIMARY KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"Copilot_Chat_Message\",\n     \"field_file\": \"copilot_messages_field_file\",\n     \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc timestamp\",\n\t\"created_by_user_id uuid\",\n        \"is_deleted boolean\",\n        \"session_id uuid\",\n        \"role varchar(128)\",\n        \"content text\",\n\t\"is_tool_called boolean\",\n\t\"tool_name varchar(128)\",\n\t\"arguments text\",\n\t\"meta_data jsonb\",\n\t\"bot_message_id varchar(128)\",\n\t\"PRIMARY KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"Copilot_Message_Feedback\",\n     \"field_file\": \"copilot_feedback_field_file\",\n     \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc timestamp\",\n\t\"created_by_user_id uuid\",\n        \"is_deleted boolean\",\n        \"session_id uuid\",\n        \"copilot_chat_message_id uuid\",\n        \"rating integer\",\n        \"feedback_text varchar(128)\",\n        \"attachments jsonb\",\n        \"organization_id uuid\",\n        \"PRIMARY KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"Organization_Onboarding\",\n     \"field_file\": \"organization_onboarding_field_file\",\n     \"schema\": [\n        \"id uuid\",\n\t\"created_at_utc timestamp\",\n\t\"modified_at_utc timestamp\",\n        \"is_deleted boolean\",\n\t\"organization_id uuid\",\n\t\"summary TEXT\",\n\t\"category varchar(256)\",\n\t\"sub_category varchar(256)\",\n\t\"free_credits_status varchar(32)\",\n\t\"version varchar(32)\",\n\t\"data jsonb\",\n\t\"credits_amount integer\",\n\t\"credits_expiry_at timestamp\",\n        \"PRIMARY KEY (id)\"\n      ]\n   },\n   {\n     \"table_name\": \"Customer_Calling_History\",\n     \"field_file\": \"customer_calling_history_field_file\",\n     \"schema\": [\n        \"id uuid\",\n        \"created_at_utc timestamp\",\n        \"modified_at_utc timestamp\",\n        \"is_deleted boolean\",\n        \"organization_id uuid\",\n        \"customer_id uuid\",\n        \"organization_channel_id uuid\",\n        \"agent_id uuid\",\n        \"call_duration_in_seconds integer\",\n        \"channel_type varchar(50)\",\n        \"call_type varchar(50)\",\n        \"call_start_time timestamp\",\n        \"call_end_time timestamp\",\n        \"unique_call_id varchar(255)\",\n        \"ai_summary text\",\n        \"call_status varchar(50)\",\n        \"PRIMARY KEY (id)\"\n     ]\n   },\n  {\n     \"table_name\": \"AIIntentMatchState\",\n     \"field_file\": \"ai_intent_match_state_field_file\",\n     \"schema\": [\n        \"id uuid\",\n        \"is_deleted boolean\",\n        \"created_at_utc timestamp\",\n        \"modified_at_utc timestamp\",\n        \"created_by_user_id uuid\",\n        \"organization_id uuid\",\n        \"status varchar(32)\",\n        \"count_of_queries_attempted integer\",\n        \"count_of_queries_exhausted integer\",\n        \"enabled_at_utc timestamp\",\n        \"disabled_at_utc timestamp\",\n        \"active_automations_count integer\",\n        \"max_allowed integer\",\n        \"PRIMARY KEY (id)\"\n     ]\n   },\n   {\n     \"table_name\": \"Campaign\",\n     \"field_file\": \"campaign_field_file\",\n     \"schema\": [\n       \"id uuid\",\n       \"created_at_utc timestamp\",\n       \"modified_at_utc timestamp\",\n       \"created_by_user_id uuid\",\n       \"is_deleted boolean\",\n       \"organization_id uuid\",\n       \"name varchar(256)\",\n       \"msgs_queued integer\",\n       \"msgs_sent integer\",\n       \"msgs_delivered integer\",\n       \"msgs_seen integer\",\n       \"template_id varchar(64)\",\n       \"campaign_status varchar(32)\",\n       \"campaign_type varchar(32)\",\n       \"campaign_one_time_type varchar(32)\",\n       \"filter_clause text\",\n       \"send_at_utc timestamp\",\n       \"send_until_utc timestamp\",\n       \"completed_at_utc timestamp\",\n       \"merge_variables_header varchar(50000)\",\n       \"merge_variables_body varchar(50000)\",\n       \"merge_variables_footer varchar(50000)\",\n       \"msgs_failed bigint\",\n       \"task_id varchar(64)\",\n       \"msgs_attempted integer\",\n       \"reply_rules varchar(10000)\",\n       \"failure_reason text\",\n       \"is_click_tracking_enabled boolean\",\n       \"retry_expire_at_utc timestamp\",\n       \"meta_data JSONB\",\n       \"fallback_enabled boolean\",\n       \"primary_campaign_id uuid\",\n       \"channel_type varchar(256)\",\n       \"PRIMARY KEY (id)\"\n     ] \n   }\n]\n"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"msc-table-config","namespace":"mongo-stream-cdc"}}
+  creationTimestamp: "2026-05-21T07:00:25Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:combined_table_config_3.json: {}
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2026-05-21T07:00:25Z"
+  name: msc-table-config
+  namespace: mongo-stream-cdc
+  resourceVersion: "1779346825375791003"
+  uid: 345811f4-f1b9-43b3-b11b-81f3fe91986c

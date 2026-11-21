@@ -1,0 +1,104 @@
+# deployments.yaml — msc-stream + msc-sink
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msc-stream
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "msc.labels" . | nindent 4 }}
+    app: msc-stream
+spec:
+  # 2 replicas — one active leader, one hot standby
+  # Leader election via K8s Lease (msc_lease.py)
+  # Standby takes over within ~30s if leader dies
+  replicas: {{ .Values.stream.replicas }}
+  selector:
+    matchLabels:
+      app: msc-stream
+  template:
+    metadata:
+      labels:
+        app: msc-stream
+    spec:
+      serviceAccountName: msc-stream
+      containers:
+        - name: msc-stream
+          image: {{ include "msc.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["python", "msc_stream.py"]
+          args:
+            {{- include "msc.args" . | nindent 12 }}
+          env:
+            {{- include "msc.mongoEnv" . | nindent 12 }}
+            {{- include "msc.kafkaEnv" . | nindent 12 }}
+            # Pod identity for lease — injected via downward API
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            # Lease tuning
+            - name: LEASE_DURATION_S
+              value: {{ .Values.stream.leaseDurationS | quote }}
+            - name: RENEW_INTERVAL_S
+              value: {{ .Values.stream.renewIntervalS | quote }}
+            - name: RETRY_INTERVAL_S
+              value: {{ .Values.stream.retryIntervalS | quote }}
+          resources:
+            {{- toYaml .Values.stream.resources | nindent 12 }}
+          livenessProbe:
+            exec:
+              command: ["python", "-c", "import sys; sys.exit(0)"]
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            failureThreshold: 3
+          volumeMounts:
+            {{- include "msc.volumeMounts" . | nindent 12 }}
+      volumes:
+        {{- include "msc.volumes" . | nindent 8 }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msc-sink
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "msc.labels" . | nindent 4 }}
+    app: msc-sink
+spec:
+  # Scale up for higher Kafka lag — consumer group distributes partitions
+  replicas: {{ .Values.sink.replicas }}
+  selector:
+    matchLabels:
+      app: msc-sink
+  template:
+    metadata:
+      labels:
+        app: msc-sink
+    spec:
+      containers:
+        - name: msc-sink
+          image: {{ include "msc.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["python", "msc_sink.py"]
+          args:
+            {{- include "msc.args" . | nindent 12 }}
+          env:
+            {{- include "msc.postgresEnv" . | nindent 12 }}
+            {{- include "msc.kafkaEnv" . | nindent 12 }}
+          resources:
+            {{- toYaml .Values.sink.resources | nindent 12 }}
+          livenessProbe:
+            exec:
+              command: ["python", "-c", "import confluent_kafka; print('ok')"]
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            failureThreshold: 3
+          volumeMounts:
+            {{- include "msc.volumeMounts" . | nindent 12 }}
+      volumes:
+        {{- include "msc.volumes" . | nindent 8 }}

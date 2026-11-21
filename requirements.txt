@@ -1,0 +1,14 @@
+# MongoDB driver — official driver
+pymongo==4.17.0
+
+# PostgreSQL driver
+psycopg2-binary==2.9.11
+
+# Kafka client — confluent-kafka preferred over kafka-python (actively maintained, backed by librdkafka)
+confluent-kafka==2.12.2
+
+# Utilities
+python-dateutil==2.9.0.post0
+
+
+kubernetes>=28.1.0

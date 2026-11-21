@@ -1,0 +1,49 @@
+{{- if .Values.snap.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: msc-snap
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "msc.labels" . | nindent 4 }}
+    app: msc-snap
+spec:
+  ttlSecondsAfterFinished: {{ .Values.snap.ttlSecondsAfterFinished }}
+  backoffLimit: {{ .Values.snap.backoffLimit }}
+  template:
+    metadata:
+      labels:
+        app: msc-snap
+    spec:
+      restartPolicy: OnFailure
+      serviceAccountName: msc-snap
+      containers:
+        - name: msc-snap
+          image: {{ include "msc.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["python", "msc_snap.py"]
+          args:
+            {{- include "msc.args" . | nindent 12 }}
+            - "--batch-size"
+            - {{ .Values.snap.batchSize | quote }}
+            {{- if .Values.snap.tables }}
+            - "--tables"
+            {{- range .Values.snap.tables }}
+            - {{ . | quote }}
+            {{- end }}
+            {{- end }}
+          env:
+            {{- include "msc.mongoEnv" . | nindent 12 }}
+            {{- include "msc.postgresEnv" . | nindent 12 }}
+            {{- include "msc.kafkaEnv" . | nindent 12 }}
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          resources:
+            {{- toYaml .Values.snap.resources | nindent 12 }}
+          volumeMounts:
+            {{- include "msc.volumeMounts" . | nindent 12 }}
+      volumes:
+        {{- include "msc.volumes" . | nindent 8 }}
+{{- end }}
